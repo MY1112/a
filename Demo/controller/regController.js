@@ -7,9 +7,31 @@ app.controller('regController',function($scope,$interval,Register){
         //$scope.passwordwarn = !$scope.password? '密码不能为空':'';
         //$scope.repeatwarn = $scope.password!=$scope.repeatPassword? '密码不一致':'';
         //$scope.emailwarn = !$scope.email? '邮箱不能为空':'';
-        if ($scope.username && $scope.password == $scope.repeatPassword && $scope.email) {
-            Register.register($scope.username,$scope.password,$scope.email);
-        }
+        //if ($scope.username && $scope.password == $scope.repeatPassword && $scope.email) {
+        //    Register.register($scope.username,$scope.password,$scope.email);
+        //}
+
+        AV.User.signUpOrlogInWithMobilePhone($scope.phone, $scope.identifying).then(function (success) {
+            // 成功
+        }, function (error) {
+            // 失败
+        });
+    }
+
+
+    $scope.yanzheng = function() {
+        AV.User.verifyMobilePhone($scope.identifying).then(function(){
+            //验证成功
+            console.log('success')
+        }, function(err){
+            //验证失败
+        });
+    }
+
+    $scope.fasong = function() {
+        AV.Cloud.requestSmsCode($scope.phone).then(function (   ) {
+        }, function (error) {
+        });
     }
 
 });

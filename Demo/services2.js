@@ -50,9 +50,9 @@ app.factory('Register',function($location) {
             }
         });
     }
-    var find = function (UserId,cb) {
+    var find = function (ObjectName,UserId,cb) {
         cb = cb || function() {}
-        var apps = AV.Object.createWithoutData('_User', UserId);
+        var apps = AV.Object.createWithoutData(ObjectName, UserId);
         var relation = apps.relation('containedApps');
         var query = relation.query();
         query.find().then(function (results) {
@@ -61,16 +61,8 @@ app.factory('Register',function($location) {
             console.log("err"+error)
         });
     }
-    var Delete = function(ObjectName,Id) {
-        var todo = AV.Object.createWithoutData(ObjectName,Id);
-        todo.destroy().then(function (success) {
-            console.log('Delsuccess')
-        }, function (error) {
-            console.log('err')
-        });
-    }
 
-    return {call:call,find:find,Delete:Delete};
+    return {call:call,find:find};
 }).factory('promptBox',function($mdDialog) {
     var prompt = function(data) {
         $mdDialog.show(

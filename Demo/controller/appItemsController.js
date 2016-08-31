@@ -3,10 +3,23 @@
  */
 app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox) {
     var app_Id = localStorage.getItem('AppId');
-    $scope.AppName = app_Id;
 
 
-    //CreateApp.create()
+
+    var api_Json = new AV.Query('Api');
+    api_Json.get('57c533d379bc440063f1375f').then(function (data) {
+        $scope.api_Json = data.attributes.api_json;
+    }, function (error) {
+       console.log("err:"+error);
+    });
+
+
+    var token = new AV.Query('App');
+    token.get(app_Id).then(function (data) {
+        $scope.token = data.attributes.app_key;
+    }, function (error) {
+        console.log("err:"+error);
+    })
 
 
     $scope.addCoagent = function() {

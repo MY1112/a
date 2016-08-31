@@ -10,7 +10,7 @@
                 <!--<div class="md-media-xl card-media"></div>-->
                 <md-input-container class="md-icon-float md-block">
                     <label>Name</label>
-                    <md-icon md-svg-src="img/user1.svg" class="username"></md-icon>
+                    <!--<md-icon md-svg-src="img/user1.svg" class="username"></md-icon>-->
                     <input ng-model="username" type="text">
                 </md-input-container>
 
@@ -29,12 +29,11 @@
                 </md-input-container>
 
 
-                <!--<md-input-container md-no-float class="md-block">-->
-                    <!--<div layout="row">-->
-                        <!--<md-button class="md-raised md-warn">发送验证码</md-button>-->
-                        <!--<input ng-model="identifying" type="text" placeholder="">-->
-                    <!--</div>-->
-                <!--</md-input-container>-->
+
+                    <div layout="row">
+                        <input ng-model="identifying" type="text">
+                        <md-button class="md-raised" ng-click="fasong()">发送验证码</md-button>
+                    </div>
 
                 <md-input-container class="md-block">
                     <!-- Use floating placeholder instead of label -->
