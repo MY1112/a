@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"  type="text/css"  href="../css/index.css" />
+
+
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+
+    <script src="../lib/angular-1.5.8/angular.min.js"></script>
+    <script src="../lib/angular-1.5.8/angular-route.js"></script>
+    <script src="https://cdn1.lncld.net/static/js/av-min-1.2.1.js"></script>
+
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+
+
+    <script src="../routes/routes.js"></script>
+    <script src="../controller/controller.js"></script>
+    <script src="../controller/loginController.js"></script>
+    <script src="../controller/createAppController.js"></script>
+    <script src="../controller/logoutController.js"></script>
+    <script src="../controller/regController.js"></script>
+    <script src="../controller/homeController.js"></script>
+    <script src="../controller/myAppController.js"></script>
+    <script src="../controller/appItemsController.js"></script>
+    <script src="../directive/directive.js"></script>
+    <script src="../services2.js"></script>
+    <!--<script src="../node_modules/pingpp/lib/pingpp.js"></script>-->
+</head>
+<body ng-app='routingDemoApp' ng-controller="myCtrl" >
+
+
+
+    <md-toolbar class="md-hue-1">
+        <div class="md-toolbar-tools">
+            <span><a title="主页" href="#/"><md-button class="groupX md-primary">home</md-button></a></span>
+            <span ng-show="!navigationMenu()"><a title="我的应用" href="#/myApp"><md-button class="groupX md-primary">myApp</md-button></a></span>
+            <span ng-show="!navigationMenu()"><a title="创建应用" href="#/createApp"><md-button class="groupX md-primary">createApp</md-button></a></span>
+            <span ng-show="!navigationMenu()"><a title="登出" href="#/logout"><md-button class="groupX md-primary" ng-click="logoutClear()">logout</md-button></a></span>
+            <span ng-show="navigationMenu()"><a title="登录" href="#/login"><md-button class="groupX md-primary">login</md-button></a></span>
+            <span ng-show="navigationMenu()"><a title="注册" href="#/reg"><md-button class="groupX md-primary">register</md-button></a></span>
+            <span flex></span>
+            <md-icon md-svg-src="img/user1.svg" class="active_user "></md-icon>
+            <p class="md-primary">{{user_name}}</p>
+        </div>
+    </md-toolbar>
+
+
+<div class="home_page">
+    <h3 class="md-subhead">{{theTime}}</h3>
+    <hr>
+    <div ng-view></div>
+</div>
+</body>
+</html>
