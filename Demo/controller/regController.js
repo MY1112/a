@@ -13,8 +13,10 @@ app.controller('regController',function($scope,$interval,Register){
 
         AV.User.signUpOrlogInWithMobilePhone($scope.phone, $scope.identifying).then(function (success) {
             // 成功
+            console.log(success);
         }, function (error) {
             // 失败
+            console.log(error);
         });
     }
 
@@ -25,6 +27,7 @@ app.controller('regController',function($scope,$interval,Register){
             console.log('success')
         }, function(err){
             //验证失败
+            console.log(err);
         });
     }
 
