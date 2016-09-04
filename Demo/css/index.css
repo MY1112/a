@@ -1,6 +1,4 @@
-body {
-    margin: 0;
-}
+
 .md-button {
     color : currentColor;
 }
@@ -39,7 +37,7 @@ hr {
 }
 .home_page {
     float: left;
-    width: 80%;
+    width: 70%;
     margin-left: 1em;
 }
 h3 {
