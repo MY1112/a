@@ -1,7 +1,7 @@
 /**
  * Created by geek on 16-8-15.
  */
-var app = angular.module('routingDemoApp',['ngRoute','ngMaterial']);
+var app = angular.module('My_App',['ngRoute','ngMaterial']);
 
 app.run(function() {
     var APP_ID = 'iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz';
@@ -41,16 +41,7 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
 
     $routeProvider
         .when('/',{
-            templateUrl: 'home.html',
-            controller: 'homeController'
-        })
-        .when('/reg',{
-            templateUrl: 'reg.html',
-            controller: 'regController'
-        })
-        .when('/login',{
-            templateUrl: 'login.html',
-            controller: 'loginController'
+            templateUrl: 'index.html'
         })
         .when('/myApp',{
             templateUrl: 'myApp.html',
@@ -65,7 +56,6 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
             controller: 'createAppController'
         })
         .when('/logout',{
-            template: '这是首页页面',
             templateUrl: '/',
             controller: 'logoutController'
         })

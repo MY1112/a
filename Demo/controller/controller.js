@@ -15,6 +15,6 @@ app.controller('myCtrl',function($scope,$interval,Logout) {
     }
     $scope.logoutClear = function() {
         Logout.logout();
-        localStorage.removeItem('AppId');
+        //localStorage.removeItem('AppId');
     }
 })

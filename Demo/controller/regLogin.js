@@ -1,18 +1,19 @@
 /**
  * Created by geek on 16-9-2.
  */
-var app = angular.module('My_App',['ngRoute','ngMaterial']);
 
-app.run(function() {
-    var APP_ID = 'iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz';
-    var APP_KEY = 'KqPheplNC2ctxTW4XJlaXoeJ';
-    AV.init({
-        appId: APP_ID,
-        appKey: APP_KEY
-    });
-})
-
-app.controller('regLogin',function($scope) {
+app.controller('regLogin',function($scope,Logout) {
+    $scope.navigationMenu = function() {
+        if (localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser') == undefined) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    $scope.logoutClear = function() {
+        Logout.logout();
+        //localStorage.removeItem('AppId');
+    }
     $scope.save_juadge = function() {
         localStorage.setItem('Juadge','true');
     }
