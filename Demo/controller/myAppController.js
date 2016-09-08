@@ -1,21 +1,19 @@
 /**
  * Created by geek on 16-8-23.
  */
-app.controller('myAppController',function($scope,exchangeLeancloud,promptBox) {
-    var user_items = JSON.parse(localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser'));
+app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$timeout,$location) {
 
-    exchangeLeancloud.find('_User',user_items.objectId,function(appItems) {
-        var userInfo = [];
-        for(var i = 0;i<appItems.length;i++) {
-            var arr = appItems[i].attributes;
-            arr.id = appItems[i].id;
-            userInfo.push(arr);
-            $scope.results = userInfo;
-        }
+    exchangeLeancloud.call('get_app',{paramsJson:'paramsJson'},function(data) {
+        $scope.results = data;
     });
+
+    $timeout(function() {
+        document.myForm.button1.click();
+    }, 500);
 
     $scope.toAppItems = function(AppId) {
         localStorage.setItem('AppId',AppId);
+        $location.path("/App");
     }
 
     $scope.deleteApp = function (AppId) {

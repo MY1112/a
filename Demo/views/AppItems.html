@@ -1,5 +1,5 @@
 
-<div ng-cloak>
+<div>
     <md-content>
         <md-tabs md-dynamic-height md-border-bottom>
             <md-tab label="Token">
@@ -26,9 +26,11 @@
                     <p>{{api_Json}}</p>
                 </md-content>
             </md-tab>
-            <md-tab label="添加协作用户">
+            <md-tab label="添加协作用户" ng-click="ggggg()">
                 <md-content class="md-padding">
-                    <h1 class="md-title">添加协作用户</h1>
+                    <h1 class="md-title">已有协作用户：</h1>
+                    <relation-User actors="actors"></relation-User>
+                    <h1 class="md-title">添加协作用户：</h1>
                     <div layout="row" flex="40">
                         <input type="text" ng-model="coagent" placeholder="UserName"/>
                         <md-button class="md-raised" ng-click="addCoagent()">Regist</md-button>

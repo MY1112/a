@@ -12,7 +12,7 @@ app.controller('regLogin',function($scope,Logout) {
     }
     $scope.logoutClear = function() {
         Logout.logout();
-        //localStorage.removeItem('AppId');
+        localStorage.removeItem('AppId');
     }
     $scope.save_juadge = function() {
         localStorage.setItem('Juadge','true');

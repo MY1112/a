@@ -40,10 +40,8 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
     //blue-grey
 
     $routeProvider
+
         .when('/',{
-            templateUrl: 'index.html'
-        })
-        .when('/myApp',{
             templateUrl: 'myApp.html',
             controller: 'myAppController'
         })
@@ -54,10 +52,6 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
         .when('/createApp',{
             templateUrl: 'createApp.html',
             controller: 'createAppController'
-        })
-        .when('/logout',{
-            templateUrl: '/',
-            controller: 'logoutController'
         })
         .otherwise({redirectTo:'/'});
 }]);
