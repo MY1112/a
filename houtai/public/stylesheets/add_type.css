@@ -1,0 +1,121 @@
+body{
+    margin: 0;
+    width: 1484px;
+}
+.title_style {
+    background-color: #e5e5e5;
+    border: 3px solid #8b8b8b;
+    border-bottom: 1px solid #8b8b8b;
+    height: 50px;
+    width: 1479px;
+    background-image: url(../images/001.png);
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: 40px 10px;
+}
+.title_style p {
+    font-size: 20px;
+    padding-left: 100px;
+    margin: 0;
+    line-height: 50px;
+    color: #3d3d3d;
+}
+.home_style {
+    border: 3px solid #8b8b8b;
+    border-top: 1px solid #8b8b8b;
+    height: 550px;
+    width: 1479px;
+}
+.menu_navigation {
+    margin: 0;
+    float: left;
+    background-color: #b1b1b1;
+    border-right: 2px solid #8b8b8b;
+    height: 550px;
+    width: 14.2%;
+}
+.merchandise_control {
+    font-size: 15px;
+    height: 40px;
+    width: 210px;
+    background-color: #b1b1b1;
+    border: 0;
+    border-bottom: 1px solid #8b8b8b;
+}
+.Preferential_activity {
+    font-size: 15px;
+    height: 40px;
+    width: 210px;
+    background-color: #b1b1b1;
+    border: 0;
+    border-bottom: 1px solid #8b8b8b;
+}
+.supervise_info {
+    float: left;
+    display: inline;
+    margin: 0;
+    height: 550px;
+    width: 1265px;
+}
+a:link {
+    text-decoration: none;
+}
+.goods_info {
+    display: inline;
+    line-height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: rgba(4, 8, 181, 0.81);
+}
+.add_goods {
+    display: inline;
+    line-height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: rgba(4, 8, 181, 0.81);
+}
+.add_type {
+    display: inline;
+    line-height: 40px;
+    margin-top: 10px;
+    padding-left: 10px;
+    font-size: 14px;
+    color: #3d3d3d;
+}
+.type_name {
+    margin: 50px 0 50px 300px;
+    color: #3d3d3d;
+}
+.type_name input {
+    margin-left: 50px;
+}
+.type_value {
+    margin: 50px 0 50px 300px;
+    color: #3d3d3d;
+}
+.type_value input {
+    margin-left: 50px;
+}
+.save_type {
+    margin-left: 300px;
+    margin-top: 38px;
+    margin-bottom: 28px;
+    border-radius: 5px;
+    border: 1px solid #8b8b8b;
+    width:100px;
+    height:26px;
+    font-size: 80%;
+}
+.cancel {
+    margin-left: 80px;
+    margin-top: 38px;
+    margin-bottom: 28px;
+    border-radius: 5px;
+    border: 1px solid #8b8b8b;
+    width:100px;
+    height:26px;
+    font-size: 80%;
+}
+
