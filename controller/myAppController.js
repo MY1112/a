@@ -7,12 +7,19 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$ti
         $scope.results = data;
     });
 
+    exchangeLeancloud.call('show_relation_app',{paramsJson:'paramsJson'},function(data) {
+        $scope.relations = data;
+    })
+
     $timeout(function() {
         document.myForm.button1.click();
     }, 500,2);
 
     $scope.applications = function(appStatus) {
         return appStatus == 'success';
+    }
+    $scope.checking = function(appStatus) {
+        return appStatus == 'checking';
     }
 
     $scope.submit = function(appId) {
@@ -21,6 +28,7 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$ti
         };
         exchangeLeancloud.call('check',paramsJson,function(data) {
             promptBox.prompt(data)
+            window.location.reload();
         })
     }
 

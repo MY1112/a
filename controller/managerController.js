@@ -5,8 +5,11 @@ app.controller('managerController',function ($scope,exchangeLeancloud,$timeout) 
     $timeout(function() {
         document.myForm.button1.click();
     }, 500,2);
-    $scope.auditingStatus = function(appStatus) {
+    $scope.successStatus = function(appStatus) {
         return appStatus == 'success';
+    }
+    $scope.notStatus = function(appStatus) {
+        return appStatus == '未审核';
     }
     $scope.agree = function(appId) {
         var paramsJson = {

@@ -442,11 +442,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                     <!--<i class="icon-user"></i> My Profile </a>-->
                             <!--</li>-->
                             <li>
-                                <a href="#/myApp">
+                                <a href="#/myApp" ng-hide="managerHide">
                                     <i class="icon-calendar"></i> My App </a>
                             </li>
                             <li>
-                                <a href="#/createApp">
+                                <a href="#/createApp" ng-hide="managerHide">
                                     <i class="icon-envelope-open"></i> Create App
                                     <!--<span class="badge badge-danger"> 3 </span>-->
                                 </a>
@@ -1141,7 +1141,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <span class="form-title">Welcome.</span>
                 <span class="form-subtitle">Please login.</span>
             </div>
-            <div class="alert alert-danger" ng-show="aaa">
+            <div class="alert alert-danger" ng-show="inputWarn">
                 <button class="close" data-close="alert"></button>
                 <span> Enter any username and password. </span>
             </div>
@@ -1160,7 +1160,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
             <div>
                 <input type="text" ng-model="lgp">
-                <input type="text" ng-model="lgm">
+                <input type="password" ng-model="lgm">
                 <md-button class="md-raised md-warn" ng-click="yonghu()">denglu</md-button>
             </div>
 
@@ -1179,20 +1179,14 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
             <div class="login-options">
                 <h4 class="pull-left">Or login with</h4>
-                <ul class="social-icons pull-right">
-                    <li>
-                        <a class="social-icon-color facebook" data-original-title="facebook" href="javascript:;"></a>
-                    </li>
-                    <li>
-                        <a class="social-icon-color twitter" data-original-title="Twitter" href="javascript:;"></a>
-                    </li>
-                    <li>
-                        <a class="social-icon-color googleplus" data-original-title="Goole Plus" href="javascript:;"></a>
-                    </li>
-                    <li>
-                        <a class="social-icon-color linkedin" data-original-title="Linkedin" href="javascript:;"></a>
-                    </li>
-                </ul>
+                <div class="social-icons pull-right">
+                    <md-button class="md-fab md-mini md-primary" aria-label="Weixin">
+                        <md-icon md-svg-src="img/weixin-logo.svg"></md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini" aria-label="Sina">
+                        <md-icon md-svg-src="img/sina-weibo.svg"></md-icon>
+                    </md-button>
+                </div>
             </div>
             <div class="create-account">
                 <p>

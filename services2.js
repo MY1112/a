@@ -30,10 +30,7 @@ app.factory('Register',function($location) {
         AV.User.logOut();
         var currentUser = AV.User.current();
         if (currentUser) {
-            console.log('hehe')
-        }
-        else {
-            console.log('666')
+            console.log('失败！')
         }
     }
     return {logout:logout};

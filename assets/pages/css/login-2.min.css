@@ -21,7 +21,7 @@
 .form-actions .forget-password-block{padding-top:7px}
 .login-options{margin-top:30px;padding-top:20px;padding-bottom:50px;border-top:1px solid #69a0c4;border-bottom:1px solid #69a0c4}
 .login-options h4{margin-top:8px;font-weight:600;font-size:15px;color:#b7d1e2!important}
-.login .forget-password{font-size:14px}.login-options .social-icons{float:right;padding-top:3px}
+.login .forget-password{font-size:14px}.login-options .social-icons{float:right;}
 .login-options .social-icons li a{border-radius:15px!important;-moz-border-radius:15px!important;-webkit-border-radius:15px!important}.login .content .forget-form .form-actions{border:0;margin-bottom:0;padding-bottom:20px}.login .content .register-form .form-actions{border:0;margin-bottom:0;padding-bottom:0}.login .btn,.login .btn-default{font-weight:600;padding:10px 25px!important;background-color:#5995bb;color:#8fc4e5}.login .content .form-actions .checkbox{margin-top:8px;display:inline-block}.login .content .form-actions .btn{margin-top:1px}.login .btn{border:1px solid #72a9cc}
 .login .btn:hover{
     border:1px solid #90bbd7;

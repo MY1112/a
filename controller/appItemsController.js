@@ -6,12 +6,12 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
 
 
 
-    var api_Json = new AV.Query('Api');
-    api_Json.get('57c533d379bc440063f1375f').then(function (data) {
-        $scope.api_Json = data.attributes.api_json;
-    }, function (error) {
-       console.log("err:"+error);
-    });
+    //var api_Json = new AV.Query('Api');
+    //api_Json.get('57c533d379bc440063f1375f').then(function (data) {
+    //    $scope.api_Json = data.attributes.api_json;
+    //}, function (error) {
+    //   console.log("err:"+error);
+    //});
 
 
     var token = new AV.Query('App');
@@ -22,7 +22,7 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
     })
 
 
-    $scope.ggggg = function() {
+    $scope.show_relation = function() {
         var paramsJson = {
             appID: app_Id
         };
