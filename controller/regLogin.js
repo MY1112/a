@@ -41,6 +41,18 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout) {
             });
         }
     }
+
+    $scope.yonghu = function() {
+        AV.User.logIn($scope.lgp,$scope.lgm).then(function (loginedUser) {
+            $scope.lgp='';
+            $scope.lgm='';
+            $timeout(function() {
+                $location.path('/juadge');
+            },1000);
+        }, function (error) {
+        });
+    }
+
     $scope.transmissionLogin = function () {
         if($scope.loginPhone){
             AV.User.requestLoginSmsCode($scope.loginPhone).then(function (success) {

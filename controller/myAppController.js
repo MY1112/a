@@ -11,6 +11,19 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$ti
         document.myForm.button1.click();
     }, 500,2);
 
+    $scope.applications = function(appStatus) {
+        return appStatus == 'success';
+    }
+
+    $scope.submit = function(appId) {
+        var paramsJson = {
+            appId: appId
+        };
+        exchangeLeancloud.call('check',paramsJson,function(data) {
+            promptBox.prompt(data)
+        })
+    }
+
     $scope.toAppItems = function(AppId) {
         localStorage.setItem('AppId',AppId);
         $location.path("/App");

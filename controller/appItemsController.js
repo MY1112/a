@@ -14,26 +14,25 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
     });
 
 
-    //var token = new AV.Query('App');
-    //token.get(app_Id).then(function (data) {
-    //    $scope.token = data.attributes.app_key;
-    //}, function (error) {
-    //    console.log("err:"+error);
-    //})
+    var token = new AV.Query('App');
+    token.get(app_Id).then(function (data) {
+        $scope.token = data.attributes.app_key;
+    }, function (error) {
+        console.log("err:"+error);
+    })
 
 
     $scope.ggggg = function() {
         var paramsJson = {
             appID: app_Id
         };
-        exchangeLeancloud.call('open_relation_user',paramsJson,function(data) {
+        exchangeLeancloud.call('show_relation_user',paramsJson,function(data) {
             $scope.actors = data;
         });
     }
 
 
     $scope.restriction = function (userId,ev) {
-            // Appending dialog to document.body to cover sidenav in docs app
         var confirm = $mdDialog.confirm()
             .title('是否给已选用户添加权限？')
             .textContent('')
@@ -43,7 +42,6 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
             .cancel('取消');
 
             $mdDialog.show(confirm).then(function(result) {
-                //$scope.status = 'You decided to name your dog ' + result + '.';
                 var paramsJson = {
                     userID: userId,
                     appID: app_Id
@@ -52,7 +50,6 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
                     promptBox.prompt(data);
                 })
             }, function() {
-                //$scope.status = 'You didn\'t name your dog.';
             });
     }
 

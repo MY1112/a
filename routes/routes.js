@@ -13,7 +13,6 @@ app.run(function() {
 })
 
 
-
 app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdThemingProvider){
     $mdThemingProvider.theme('default')
         .primaryPalette('blue-grey');
@@ -23,9 +22,16 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
             templateUrl: 'juadge.html',
             controller: 'juadgeController'
         })
+        .when('/juadge',{
+            templateUrl: 'juadge.html',
+            controller: 'juadgeController'
+        })
         .when('/myApp',{
             templateUrl: 'myApp.html',
             controller: 'myAppController'
+        })
+        .when('/manager',{
+            templateUrl: 'manager.html'
         })
         .when('/App',{
             templateUrl: 'AppItems.html',

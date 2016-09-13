@@ -1,7 +1,7 @@
 /**
  * Created by geek on 16-8-16.
  */
-app.controller('createAppController',function($scope,exchangeLeancloud,promptBox,$location) {
+app.controller('createAppController',function($scope,exchangeLeancloud,promptBox) {
 
     $scope.addApp = function () {
         if($scope.appName){
