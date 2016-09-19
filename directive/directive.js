@@ -8,12 +8,12 @@ app.directive("getMyApp", function () {
         scope: {
             results: '='
         },
-        template: "<div flex-xs flex-gt-xs='50' layout='row' style='background-color: #eef1f5;'>" +
+        template: "<div flex-xs flex-gt-xs='90' layout='row' style='background-color: #eef1f5;' layout-wrap>" +
         "<md-card id='{{result.objectId}}' ng-repeat='result in results' style='background-color: #23527c;color: white;'>" +
         "<md-card-title>" +
         "<md-card-title-text>" +
         "<span class='md-headline'>{{result.app_name}}</span>" +
-        "<span class='subhead'>审核状态：{{result.status}}</span>"+
+        "<span class='status'>审核状态：{{result.status}}</span>"+
         "</md-card-title-text>" +
         "<md-card-title-media>" +
         "<div class='md-media-lg card-media' style='text-align: center;font-size: 60px;height: 40px;'>" +
@@ -33,13 +33,13 @@ app.directive("getMyApp", function () {
     return {
         restrict: 'EA',
         controller: 'myAppController',
-        template: "<div flex-xs flex-gt-xs='9   0' layout='row' style='background-color: #eef1f5;' layout-wrap>" +
+        template: "<div flex-xs flex-gt-xs='90' layout='row' style='background-color: #eef1f5;' layout-wrap>" +
         "<md-card id='{{relation.objectId}}' ng-repeat='relation in relations' style='background-color: #23527c;color: white;'>" +
         "<md-card-title>" +
         "<md-card-title-text>" +
         "<span class='md-headline'>{{relation.app_name}}</span>" +
-        "<span class='subhead'>审核状态：{{relation.status}}</span>"+
-        "<span class='subhead'>创建者：</span>"+
+        "<span class='subhead'>审核状态:{{relation.status}}</span>"+
+        "<span class='subhead'>创建者：{{relation.user_name}}</span>"+
         "</md-card-title-text>" +
         "<md-card-title-media>" +
         "<div class='md-media-lg card-media' style='text-align: center;font-size: 60px;height: 40px;'>" +
@@ -74,9 +74,9 @@ app.directive("getMyApp", function () {
                 "<th>审核状态</th>"+
                 "<th>审核操作</th>"+
             "</tr>"+
-            "<tr id='allApp.objectId    ' ng-repeat='allApp in allApps'>"+
+            "<tr id='{{allApp.objectId}}' ng-repeat='allApp in allApps'>"+
                 "<td>{{allApp.app_name}}</td>"+
-                "<td>{{allApp.status}}</td>"+
+                "<td class='status'>{{allApp.status}}</td>"+
                 "<td><md-button class='md-raised md-warn' ng-disabled='successStatus(allApp.status)||notStatus(allApp.status)' ng-click='agree(allApp.objectId)'>审核通过</md-button>"+
                 "<md-button class='md-raised md-warn'  ng-disabled='successStatus(allApp.status)||notStatus(allApp.status)' ng-click='disagree(allApp.objectId)'>不通过</md-button></td>"+
             "</tr>"+

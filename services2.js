@@ -1,31 +1,7 @@
 /**
  * Created by geek on 16-8-19.
  */
-app.factory('Register',function($location) {
-    var register = function(username,password,email) {
-        var user = new AV.User();
-        user.setUsername(username);
-        user.setPassword(password);
-        user.setEmail(email);
-        return user.signUp().then(function (loginedUser) {
-            return $location.path("/myApp");
-        }, (function (error) {
-            console.log('err'+error)
-        }));
-    }
-    return {register:register};
-}).factory('Login',function($location) {
-    var login = function(username,password,cb) {
-        cb = cb ||function() {}
-        return AV.User.logIn(username, password).then(function (loginedUser) {
-            cb(loginedUser)
-            return $location.path("/myApp");
-        }, function (error) {
-            alert('用户名或密码错误')
-        });
-    }
-    return {login:login};
-}).factory('Logout',function($location) {
+app.factory('Logout',function() {
     var logout = function() {
         AV.User.logOut();
         var currentUser = AV.User.current();
@@ -34,13 +10,12 @@ app.factory('Register',function($location) {
         }
     }
     return {logout:logout};
-}).factory('exchangeLeancloud',function() {
-
+}).factory('exchangeLeancloud',function($rootScope) {
     var call = function(function_name,paramsJson,cb) {
         cb = cb || function() {}
         AV.Cloud.run(function_name, paramsJson, {
             success: function(data) {
-                cb(data)
+                $rootScope.$apply(cb(data))
             },
             error: function(err) {
                 console.log('err:'+err)
@@ -58,7 +33,6 @@ app.factory('Register',function($location) {
             console.log("err"+error)
         });
     }
-
     return {call:call,find:find};
 }).factory('promptBox',function($mdDialog) {
     var prompt = function(data) {
@@ -69,7 +43,6 @@ app.factory('Register',function($location) {
                 .textContent(data)
                 .ariaLabel('Offscreen Demo')
                 .ok('确认')
-                // Or you can specify the rect to do the transition from
                 .openFrom({
                     top: -50,
                     width: 30,
@@ -81,4 +54,26 @@ app.factory('Register',function($location) {
         );
     }
     return {prompt:prompt};
+}).factory('Permission',function(exchangeLeancloud,promptBox,$mdDialog) {
+    var user_permission = function(userId,ev,app_Id) {
+        var confirm = $mdDialog.confirm()
+            .title('是否给已选用户添加权限？')
+            .textContent('')
+            .ariaLabel('Lucky day')
+            .targetEvent(ev)
+            .ok('添加权限')
+            .cancel('取消');
+
+        $mdDialog.show(confirm).then(function(result) {
+            var paramsJson = {
+                userID: userId,
+                appID: app_Id
+            };
+            exchangeLeancloud.call('relation_app_acl',paramsJson,function(data){
+                promptBox.prompt(data);
+            })
+        }, function() {
+        });
+    }
+    return {user_permission:user_permission};
 })

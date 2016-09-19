@@ -1,7 +1,7 @@
 /**
  * Created by geek on 16-8-23.
  */
-app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$timeout,$location) {
+app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$location) {
 
     exchangeLeancloud.call('get_app',{paramsJson:'paramsJson'},function(data) {
         $scope.results = data;
@@ -11,10 +11,6 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$ti
         $scope.relations = data;
     })
 
-    $timeout(function() {
-        document.myForm.button1.click();
-    }, 500,2);
-
     $scope.applications = function(appStatus) {
         return appStatus == 'success';
     }
@@ -22,14 +18,17 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$ti
         return appStatus == 'checking';
     }
 
-    $scope.submit = function(appId) {
+    $scope.submit = function(appId,appStatus) {
+        $scope.checking = function (appStatus) {
+            return true;
+        }
         var paramsJson = {
             appId: appId
         };
         exchangeLeancloud.call('check',paramsJson,function(data) {
-            promptBox.prompt(data)
-            window.location.reload();
-        })
+            document.getElementById(appId).getElementsByClassName('status')[0].innerText = "审核状态:"+data;
+        });
+
     }
 
     $scope.toAppItems = function(AppId) {

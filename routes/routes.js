@@ -18,13 +18,7 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
         .primaryPalette('blue-grey');
 
     $routeProvider
-        .when('/',{
-            templateUrl: 'juadge.html',
-            controller: 'juadgeController'
-        })
-        .when('/juadge',{
-            templateUrl: 'juadge.html',
-            controller: 'juadgeController'
+        .when('/home',{
         })
         .when('/myApp',{
             templateUrl: 'myApp.html',
@@ -41,5 +35,5 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
             templateUrl: 'createApp.html',
             controller: 'createAppController'
         })
-        .otherwise({redirectTo:'/'});
+        .otherwise({redirectTo:'/home'});
 }]);

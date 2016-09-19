@@ -1,10 +1,7 @@
-app.controller('managerController',function ($scope,exchangeLeancloud,$timeout) {
+app.controller('managerController',function ($scope,exchangeLeancloud) {
     exchangeLeancloud.call('get_check', {paramsJson: 'paramsJson'}, function (data) {
         $scope.allApps = data;
     });
-    $timeout(function() {
-        document.myForm.button1.click();
-    }, 500,2);
     $scope.successStatus = function(appStatus) {
         return appStatus == 'success';
     }
@@ -12,11 +9,14 @@ app.controller('managerController',function ($scope,exchangeLeancloud,$timeout) 
         return appStatus == '未审核';
     }
     $scope.agree = function(appId) {
+        $scope.successStatus = function(appStatus) {
+            return true;
+        }
         var paramsJson = {
             appId: appId
         };
         exchangeLeancloud.call('consent_check',paramsJson,function(data) {
-            window.location.reload();
+            document.getElementById(appId).getElementsByClassName('status')[0].innerText = data;
         })
     }
 
@@ -25,7 +25,7 @@ app.controller('managerController',function ($scope,exchangeLeancloud,$timeout) 
             appId: appId
         };
         exchangeLeancloud.call('no_consent_check',paramsJson,function(data) {
-            window.location.reload();
+            document.getElementById(appId).getElementsByClassName('status')[0].innerText = data;
         })
     }
 })

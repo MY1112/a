@@ -33,9 +33,16 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
         }else {
             $scope.inputWarn = false;
             AV.User.logInWithMobilePhoneSmsCode($scope.loginPhone, $scope.loginVerification).then(function (success) {
-                $timeout(function() {
-                    $location.path('/juadge');
-                },1000);
+                $scope.current_usernme = $scope.loginPhone;
+                exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
+                    if (data == '管理员') {
+                        $scope.managerHide = true;
+                        $location.path('/manager')
+                    }else {
+                        $scope.managerHide = false;
+                        $location.path('/myApp')
+                    }
+                });
             }, function (error) {
                 console.log('err')
             });
@@ -44,18 +51,18 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
 
     $scope.yonghu = function() {
         AV.User.logIn($scope.lgp,$scope.lgm).then(function (loginedUser) {
+            localStorage.setItem('current_user',$scope.lgp);
             $scope.lgp='';
             $scope.lgm='';
             exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
                 if (data == '管理员') {
-                    $scope.managerHide = true;
+                    //$scope.managerHide = true;
+                    $location.path('/manager')
                 }else {
-                    $scope.managerHide = false;
+                    //$scope.managerHide = false;
+                    $location.path('/myApp')
                 }
             });
-            $timeout(function() {
-                $location.path('/juadge');
-            },1000);
         }, function (error) {
         });
     }
@@ -77,23 +84,19 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
     }
     $scope.registered = function() {
         AV.User.signUpOrlogInWithMobilePhone($scope.PhoneNumber, $scope.Verification).then(function (success) {
-            $timeout(function() {
-                $location.path('/juadge');
-            },1000)
+            exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
+                if (data == '管理员') {
+                    $scope.managerHide = true;
+                    $location.path('/manager')
+                }else {
+                    $scope.managerHide = false;
+                    $location.path('/myApp')
+                }
+            });
             console.log(success);
         }, function (error) {
             console.log(error);
         });
     }
 
-    //$scope.weixinLogin = function() {
-    //    AV.User.signUpOrlogInWithAuthData({
-    //        "openid": "oPrJ7uM5Y5oeypd0fyqQcKCaRv3o",
-    //        "access_token": "OezXcEiiBSKSxW0eoylIeNFI3H7HsmxM7dUj1dGRl2dXJOeIIwD4RTW7Iy2IfJePh6jj7OIs1GwzG1zPn7XY_xYdFYvISeusn4zfU06NiA1_yhzhjc408edspwRpuFSqtYk0rrfJAcZgGBWGRp7wmA",
-    //        "expires_at": "2016-01-06T11:43:11.904Z"
-    //    }, 'weixin').then(function (s) {
-    //    }, function (e) {
-    //
-    //    });
-    //}
 })

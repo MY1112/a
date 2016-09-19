@@ -63,14 +63,10 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
 </head>
-<!-- END HEAD -->
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md" ng-app="My_App" ng-controller="regLogin">
-<!-- BEGIN HEADER -->
 <div ng-show="!navigationMenu()" class="page-header navbar navbar-fixed-top">
-    <!-- BEGIN HEADER INNER -->
     <div class="page-header-inner ">
-        <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="index.html">
                 <img src="../assets/layouts/layout2/img/logo-default.png" alt="logo" class="logo-default" /> </a>
@@ -433,7 +429,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                             <img alt="" class="img-circle" src="../views/img/dea.png" />
-                            <span class="username username-hide-on-mobile"> Mengyuan </span>
+                            <span class="username username-hide-on-mobile">{{current_usernme}}</span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">
@@ -1332,7 +1328,6 @@ License: You must have a valid license purchased only from themeforest(the above
     <!-- END THEME LAYOUT SCRIPTS -->
 
 
-
 <script src="../lib/angular-1.5.8/angular.min.js"></script>
 <script src="../lib/angular-1.5.8/angular-route.js"></script>
 <script src="../lib/av-min-1.2.1.js"></script>
@@ -1345,7 +1340,6 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <script src="../routes/routes.js"></script>
 <script src="../directive/directive.js"></script>
-<script src="../controller/juadgeController.js"></script>
 <script src="../controller/regLogin.js"></script>
 <script src="../controller/managerController.js"></script>
 <script src="../controller/myAppController.js"></script>

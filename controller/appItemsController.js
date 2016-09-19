@@ -1,17 +1,17 @@
 /**
  * Created by geek on 16-8-29.
  */
-app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,$mdDialog) {
+app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,Permission) {
     var app_Id = localStorage.getItem('AppId');
 
 
 
-    //var api_Json = new AV.Query('Api');
-    //api_Json.get('57c533d379bc440063f1375f').then(function (data) {
-    //    $scope.api_Json = data.attributes.api_json;
-    //}, function (error) {
-    //   console.log("err:"+error);
-    //});
+    var api_Json = new AV.Query('Api');
+    api_Json.get('57d65bb3a22b9d006c620db8').then(function (data) {
+        $scope.api_Json = data.attributes.api_json;
+    }, function (error) {
+       console.log("err:"+error);
+    });
 
 
     var token = new AV.Query('App');
@@ -21,6 +21,9 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
         console.log("err:"+error);
     })
 
+    $scope.fangwen = function() {
+
+    }
 
     $scope.show_relation = function() {
         var paramsJson = {
@@ -33,24 +36,7 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
 
 
     $scope.restriction = function (userId,ev) {
-        var confirm = $mdDialog.confirm()
-            .title('是否给已选用户添加权限？')
-            .textContent('')
-            .ariaLabel('Lucky day')
-            .targetEvent(ev)
-            .ok('添加权限')
-            .cancel('取消');
-
-            $mdDialog.show(confirm).then(function(result) {
-                var paramsJson = {
-                    userID: userId,
-                    appID: app_Id
-                };
-                exchangeLeancloud.call('relation_app_acl',paramsJson,function(data){
-                    promptBox.prompt(data);
-                })
-            }, function() {
-            });
+        Permission.user_permission(userId,ev,app_Id)
     }
 
 
