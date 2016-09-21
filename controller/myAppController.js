@@ -19,9 +19,7 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$lo
     }
 
     $scope.submit = function(appId,appStatus) {
-        $scope.checking = function (appStatus) {
-            return true;
-        }
+        document.getElementById(appId).getElementsByClassName('submit')[0].disabled = true;
         var paramsJson = {
             appId: appId
         };

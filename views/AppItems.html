@@ -2,6 +2,13 @@
 <div>
     <md-content>
         <md-tabs md-dynamic-height md-border-bottom>
+            <md-tab label="已拥有sdk">
+                <md-content class="md-padding">
+                    <p>.........</p>
+                    <md-button class="md-raised" ng-click="fangwen()" ng-disabled="aaa()">访问API</md-button>
+                    <p>{{}}</p>
+                </md-content>
+            </md-tab>
             <md-tab label="Token">
                 <md-content class="md-padding">
                     <h1 class="md-title">App_key</h1>
@@ -18,8 +25,6 @@
                         <md-icon md-svg-src="img/ios.svg"></md-icon>Ios下载
                     </h1>
                     <p>..........</p>
-                    <md-button class="md-raised" ng-click="fangwen()">访问API</md-button>
-                    <p>{{}}</p>
                 </md-content>
             </md-tab>
             <md-tab label="API文档">

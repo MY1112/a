@@ -9,9 +9,9 @@ app.controller('managerController',function ($scope,exchangeLeancloud) {
         return appStatus == '未审核';
     }
     $scope.agree = function(appId) {
-        $scope.successStatus = function(appStatus) {
-            return true;
-        }
+        document.getElementById(appId).getElementsByClassName('submit')[0].disabled = true;
+        document.getElementById(appId).getElementsByClassName('submit')[1].disabled = true;
+
         var paramsJson = {
             appId: appId
         };

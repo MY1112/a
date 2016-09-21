@@ -4,8 +4,6 @@
 app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,Permission) {
     var app_Id = localStorage.getItem('AppId');
 
-
-
     var api_Json = new AV.Query('Api');
     api_Json.get('57d65bb3a22b9d006c620db8').then(function (data) {
         $scope.api_Json = data.attributes.api_json;
@@ -22,7 +20,15 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
     })
 
     $scope.fangwen = function() {
-
+        //exchangeLeancloud.call('get_api',{paramsJson:'paramsJson'},function(data) {
+        //    console.log(data)
+        //})
+        var num_times = JSON.parse(localStorage.getItem('gg'));
+        if(num_times == 3) {
+            $scope.aaa = function() {
+                return true;
+            }
+        }
     }
 
     $scope.show_relation = function() {
