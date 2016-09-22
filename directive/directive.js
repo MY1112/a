@@ -9,11 +9,12 @@ app.directive("getMyApp", function () {
             results: '='
         },
         template: "<div flex-xs flex-gt-xs='90' layout='row' style='background-color: #eef1f5;' layout-wrap>" +
-        "<md-card id='{{result.objectId}}"+'test'+"' ng-repeat='result in results' style='background-color: #23527c;color: white;'>" +
+        "<md-card id='{{result.objectId}}' ng-repeat='result in results' style='background-color: #23527c;color: white;'>" +
         "<md-card-title>" +
         "<md-card-title-text>" +
         "<span class='md-headline'>{{result.app_name}}</span>" +
         "<span class='status'>审核状态:{{result.status}}</span>"+
+        "<p>密钥已访问次数:<span class='key_time'>{{result.count}}</span>次</p>"+
         "</md-card-title-text>" +
         "<md-card-title-media>" +
         "<div class='md-media-lg card-media' style='text-align: center;font-size: 60px;height: 40px;'>" +

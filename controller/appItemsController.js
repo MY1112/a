@@ -14,21 +14,24 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
 
     var token = new AV.Query('App');
     token.get(app_Id).then(function (data) {
+        $scope.app_name = data.attributes.app_name;
         $scope.token = data.attributes.app_key;
     }, function (error) {
         console.log("err:"+error);
     })
 
     $scope.fangwen = function() {
-        //exchangeLeancloud.call('get_api',{paramsJson:'paramsJson'},function(data) {
-        //    console.log(data)
-        //})
-        var num_times = JSON.parse(localStorage.getItem('gg'));
-        if(num_times == 3) {
-            $scope.aaa = function() {
-                return true;
+        var paramsJson = {
+            token: $scope.token
+        };
+        exchangeLeancloud.call('access_api',paramsJson,function(data) {
+            var result = JSON.parse(data)
+            if(result.error == "Quota exceeded") {
+                $scope.aaa = function () {
+                    return true;
+                }
             }
-        }
+        })
     }
 
     $scope.show_relation = function() {

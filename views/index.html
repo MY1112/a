@@ -65,7 +65,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </head>
 
 <body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-md" ng-app="My_App" ng-controller="regLogin">
-<div ng-show="!navigationMenu()" class="page-header navbar navbar-fixed-top">
+<div class="page-header navbar navbar-fixed-top">
     <div class="page-header-inner ">
         <div class="page-logo">
             <a href="index.html">
@@ -482,10 +482,10 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
 <!-- END HEADER -->
 <!-- BEGIN HEADER & CONTENT DIVIDER -->
-<div ng-show="!navigationMenu()" class="clearfix"> </div>
+<div class="clearfix"> </div>
 <!-- END HEADER & CONTENT DIVIDER -->
 <!-- BEGIN CONTAINER -->
-<div ng-show="!navigationMenu()" class="page-container">
+<div class="page-container">
     <!-- BEGIN SIDEBAR -->
     <div class="page-sidebar-wrapper">
         <!-- END SIDEBAR -->
@@ -546,10 +546,10 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
     <!-- END CONTENT -->
     <!-- BEGIN QUICK SIDEBAR -->
-<a href="javascript:;" class="page-quick-sidebar-toggler" ng-show="!navigationMenu()">
+<a href="javascript:;" class="page-quick-sidebar-toggler">
         <i class="icon-login"></i>
 </a>
-<div class="page-quick-sidebar-wrapper" ng-show="!navigationMenu()" data-close-on-body-click="false">
+<div class="page-quick-sidebar-wrapper" data-close-on-body-click="false">
         <div class="page-quick-sidebar">
             <ul class="nav nav-tabs">
                 <li class="active">
@@ -1116,11 +1116,11 @@ License: You must have a valid license purchased only from themeforest(the above
     <!--</div>-->
     <!-- END FOOTER -->
     <!-- BEGIN QUICK NAV -->
-<div class="quick-nav-overlay" ng-show="!navigationMenu()"></div>
+<div class="quick-nav-overlay"></div>
 
 
 
-<div ng-show="navigationMenu()" style="height: 100%;width: 100%;background-color: #5c97bd;">
+<div id="loginPage" style=";height: 100%;width: 100%;z-index: 9999;background-color: #5c97bd;top: 0px;position: fixed;display: block">
 <div class="login">
     <div class="logo">
         <a href="Javascript:;">DeveloperPortal
@@ -1179,9 +1179,9 @@ License: You must have a valid license purchased only from themeforest(the above
                     <md-button class="md-fab md-mini md-primary" aria-label="Weixin">
                         <md-icon md-svg-src="img/weixin-logo.svg"></md-icon>
                     </md-button>
-                    <md-button class="md-fab md-mini" aria-label="Sina">
-                        <md-icon md-svg-src="img/sina-weibo.svg"></md-icon>
-                    </md-button>
+                    <!--<md-button class="md-fab md-mini" aria-label="Sina">-->
+                        <!--<md-icon md-svg-src="img/sina-weibo.svg"></md-icon>-->
+                    <!--</md-button>-->
                 </div>
             </div>
             <div class="create-account">

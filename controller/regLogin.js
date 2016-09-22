@@ -3,17 +3,18 @@
  */
 
 app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchangeLeancloud) {
-    $scope.navigationMenu = function() {
-        if (localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser') == undefined) {
-            return true;
-        }else {
-            return false;
-        }
-    }
+    //$scope.navigationMenu = function() {
+    //    if (localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser') == undefined) {
+    //        return true;
+    //    }else {
+    //        return false;
+    //    }
+    //}
 
     $scope.logoutClear = function() {
         Logout.logout();
         localStorage.removeItem('AppId');
+        document.getElementById('loginPage').style.display = "block";
     }
 
     $scope.save_juadge = function() {
@@ -40,6 +41,7 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
             AV.User.logInWithMobilePhoneSmsCode($scope.loginPhone, $scope.loginVerification).then(function (success) {
                 localStorage.setItem('current_user',$scope.loginPhone);
                 exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
+                    document.getElementById('loginPage').style.display = "none";
                     $scope.current_username = localStorage.getItem('current_user');
                     if (data == '管理员') {
                         $scope.managerHide = true;
@@ -54,20 +56,25 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
             });
         }
     }
-
-    exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
-        if (data == '管理员') {
-            $scope.managerHide = true;
-        }else {
-            $scope.managerHide = false;
-        }
-    });
-    $scope.current_username = localStorage.getItem('current_user');
+    if (localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser')) {
+        document.getElementById('loginPage').style.display = "none";
+        exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
+            $scope.current_username = localStorage.getItem('current_user');
+            if (data == '管理员') {
+                $scope.managerHide = true;
+                $location.path('/manager')
+            }else {
+                $scope.managerHide = false;
+                $location.path('/myApp')
+            }
+        });
+    }
 
     $scope.yonghu = function() {
         AV.User.logIn($scope.lgp,$scope.lgm).then(function (loginedUser) {
             localStorage.setItem('current_user',$scope.lgp);
             exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
+                document.getElementById('loginPage').style.display = "none";
                 $scope.current_username = localStorage.getItem('current_user');
                 if (data == '管理员') {
                     $scope.managerHide = true;
@@ -100,6 +107,7 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
         AV.User.signUpOrlogInWithMobilePhone($scope.PhoneNumber, $scope.Verification).then(function (success) {
             localStorage.setItem('current_user',$scope.PhoneNumber);
             exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
+                document.getElementById('loginPage').style.display = "none";
                 $scope.current_username = localStorage.getItem('current_user');
                 if (data == '管理员') {
                     $scope.managerHide = true;

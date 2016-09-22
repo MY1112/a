@@ -2,10 +2,46 @@
  * Created by geek on 16-8-23.
  */
 app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$location) {
+    var myDate = new Date();
+        var params_Json = {
+            date: {
+                year: myDate.getFullYear(),
+                month: myDate.getMonth()+1,
+                day: myDate.getDate(),
+            }
+        };
+    exchangeLeancloud.call('get_app',params_Json,function(data) {
 
-    exchangeLeancloud.call('get_app',{paramsJson:'paramsJson'},function(data) {
-        $scope.results = data;
+        //for(var i = 0; i<data.length;i++) {
+        //    if(data[i].app_key) {
+        //        test(data[i], data[i].app_key)
+        //        console.log(arr)
+        //    }else {
+        //        arr.push(data[i]);
+        //    }
+            $scope.results = data;
+
+        //}
+
     });
+    //var arr = [];
+    //
+    //function test(data,item){
+    //    var myDate = new Date();
+    //    var paramsJson = {
+    //        date: {
+    //            year: myDate.getFullYear(),
+    //            month: myDate.getMonth()+1,
+    //            day: myDate.getDate(),
+    //            apikey: item
+    //        }
+    //    };
+    //    exchangeLeancloud.call('mongodb',paramsJson,function(datas) {
+    //        console.log(datas)
+    //        data.time = datas
+    //        arr.push(data);
+    //    })
+    //}
 
     exchangeLeancloud.call('show_relation_app',{paramsJson:'paramsJson'},function(data) {
         $scope.relations = data;
