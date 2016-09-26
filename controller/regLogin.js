@@ -52,6 +52,7 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
 
     if (localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser')) {
         $scope.loginshow = false;
+        $scope.current_username = localStorage.getItem('current_user');
     }
 
     $scope.yonghu = function() {

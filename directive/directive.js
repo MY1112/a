@@ -49,7 +49,7 @@ app.directive("getMyApp", function () {
         "</md-card-title-media>" +
         "</md-card-title>" +
         "<md-card-actions layout='row' layout-align='end center'>" +
-        "<md-button ng-click='toAppItems(relation.objectId)'>详情</md-button>" +
+        "<md-button ng-click='toAppItems(relation.objectId,relation.status)'>详情</md-button>" +
         "</md-card-actions>" +
         "</md-card>" +
         "</div>"

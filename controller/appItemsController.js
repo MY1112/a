@@ -31,7 +31,6 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
 
             if(result.error == "Quota exceeded") {
                 console.log('********dd********')
-                console.log(result.error)
                 promptBox.prompt(result.error);
                 $scope.aaa = function () {
                     return true;
@@ -43,15 +42,7 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
     }
 
     $scope.download = function () {
-        //$http.get('http://192.168.1.30:3000/download')
-        //    .success(function (data) {
-        //        console.log(data)
-        //    })
-        //    .error(function (data) {
-        //        console.log('err:'+data)
-        //    });
-        location.href = 'http://192.168.1.30:3000/download/'+'file.txt'
-
+        location.href = 'http://192.168.1.30:3000/download/'+'file.txt';
     }
 
     $scope.show_relation = function() {
