@@ -25,7 +25,7 @@ app.directive("getMyApp", function () {
         "<md-card-actions layout='row' layout-align='end center'>" +
         "<md-button class='submit' ng-click='submit(result.objectId)' ng-disabled='applications(result.status)||checking(result.status)'>提交审核</md-button>"+
         "<md-button ng-click='deleteApp(result.objectId)'>删除</md-button>" +
-        "<md-button ng-click='toAppItems(result.objectId)'>详情</md-button>" +
+        "<md-button ng-click='toAppItems(result.objectId,result.status)'>详情</md-button>" +
         "</md-card-actions>" +
         "</md-card>" +
         "</div>"
@@ -74,12 +74,14 @@ app.directive("getMyApp", function () {
                 "<th>App名称</th>"+
                 "<th>审核状态</th>"+
                 "<th>审核操作</th>"+
+                "<th>删除App</th>"+
             "</tr>"+
             "<tr id='{{allApp.objectId}}' ng-repeat='allApp in allApps'>"+
                 "<td>{{allApp.app_name}}</td>"+
                 "<td class='status'>{{allApp.status}}</td>"+
                 "<td><md-button class='submit md-raised md-warn' ng-disabled='successStatus(allApp.status)||notStatus(allApp.status)' ng-click='agree(allApp.objectId)'>审核通过</md-button>"+
                 "<md-button class='submit md-raised md-warn'  ng-disabled='successStatus(allApp.status)||notStatus(allApp.status)' ng-click='disagree(allApp.objectId)'>不通过</md-button></td>"+
+                "<td><md-button class='md-raised md-warn' ng-click='deleteApp(allApp.objectId)'>删除</md-button></td>"+
             "</tr>"+
             "</table>"
     }

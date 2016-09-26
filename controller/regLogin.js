@@ -34,7 +34,7 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
             AV.User.logInWithMobilePhoneSmsCode($scope.loginPhone, $scope.loginVerification).then(function (success) {
                 localStorage.setItem('current_user',$scope.loginPhone);
                 exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
-                    document.getElementById('loginPage').style.display = "none";
+                    $scope.loginshow = false;
                     $scope.current_username = localStorage.getItem('current_user');
                     if (data == '管理员') {
                         $scope.managerHide = true;
@@ -49,23 +49,11 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
             });
         }
     }
+
     if (localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser')) {
         $scope.loginshow = false;
     }
-    if($location.path() == '/home') {
-        if (localStorage.getItem('AV/iqnghLfOqAtee5Bo1QAgsAC3-gzGzoHsz/currentUser')) {
-            exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
-                $scope.current_username = localStorage.getItem('current_user');
-                if (data == '管理员') {
-                    $scope.managerHide = true;
-                    $location.path('/manager')
-                } else {
-                    $scope.managerHide = false;
-                    $location.path('/myApp')
-                }
-            });
-        }
-    }
+
     $scope.yonghu = function() {
         AV.User.logIn($scope.lgp,$scope.lgm).then(function (loginedUser) {
             localStorage.setItem('current_user',$scope.lgp);
@@ -103,7 +91,7 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
         AV.User.signUpOrlogInWithMobilePhone($scope.PhoneNumber, $scope.Verification).then(function (success) {
             localStorage.setItem('current_user',$scope.PhoneNumber);
             exchangeLeancloud.call('juadge', {paramsJson: 'paramsJson'}, function (data) {
-                document.getElementById('loginPage').style.display = "none";
+                $scope.loginshow = false;
                 $scope.current_username = localStorage.getItem('current_user');
                 if (data == '管理员') {
                     $scope.managerHide = true;
@@ -113,7 +101,6 @@ app.controller('regLogin',function($scope,Logout,$location,$timeout,$http,exchan
                     $location.path('/myApp')
                 }
             });
-            console.log(success);
         }, function (error) {
             console.log(error);
         });

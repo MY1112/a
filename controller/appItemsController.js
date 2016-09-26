@@ -1,7 +1,7 @@
 /**
  * Created by geek on 16-8-29.
  */
-app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,Permission) {
+app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,Permission,$http,$location) {
     var app_Id = localStorage.getItem('AppId');
 
     var api_Json = new AV.Query('Api');
@@ -25,13 +25,33 @@ app.controller('appItemsController',function($scope,exchangeLeancloud,promptBox,
             token: $scope.token
         };
         exchangeLeancloud.call('access_api',paramsJson,function(data) {
+            console.log('daadad')
             var result = JSON.parse(data)
+            console.log(data)
+
             if(result.error == "Quota exceeded") {
+                console.log('********dd********')
+                console.log(result.error)
+                promptBox.prompt(result.error);
                 $scope.aaa = function () {
                     return true;
                 }
+            }else {
+                $scope.data_api = result;
             }
         })
+    }
+
+    $scope.download = function () {
+        //$http.get('http://192.168.1.30:3000/download')
+        //    .success(function (data) {
+        //        console.log(data)
+        //    })
+        //    .error(function (data) {
+        //        console.log('err:'+data)
+        //    });
+        location.href = 'http://192.168.1.30:3000/download/'+'file.txt'
+
     }
 
     $scope.show_relation = function() {

@@ -8,40 +8,12 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$lo
                 year: myDate.getFullYear(),
                 month: myDate.getMonth()+1,
                 day: myDate.getDate(),
+                responsecode: 200
             }
         };
     exchangeLeancloud.call('get_app',params_Json,function(data) {
-
-        //for(var i = 0; i<data.length;i++) {
-        //    if(data[i].app_key) {
-        //        test(data[i], data[i].app_key)
-        //        console.log(arr)
-        //    }else {
-        //        arr.push(data[i]);
-        //    }
-            $scope.results = data;
-
-        //}
-
+        $scope.results = data;
     });
-    //var arr = [];
-    //
-    //function test(data,item){
-    //    var myDate = new Date();
-    //    var paramsJson = {
-    //        date: {
-    //            year: myDate.getFullYear(),
-    //            month: myDate.getMonth()+1,
-    //            day: myDate.getDate(),
-    //            apikey: item
-    //        }
-    //    };
-    //    exchangeLeancloud.call('mongodb',paramsJson,function(datas) {
-    //        console.log(datas)
-    //        data.time = datas
-    //        arr.push(data);
-    //    })
-    //}
 
     exchangeLeancloud.call('show_relation_app',{paramsJson:'paramsJson'},function(data) {
         $scope.relations = data;
@@ -65,9 +37,13 @@ app.controller('myAppController',function($scope,exchangeLeancloud,promptBox,$lo
 
     }
 
-    $scope.toAppItems = function(AppId) {
+    $scope.toAppItems = function(AppId,AppStatus) {
         localStorage.setItem('AppId',AppId);
-        $location.path("/App");
+        if(AppStatus == 'success') {
+            $location.path("/App");
+        }else {
+            promptBox.prompt("notreviewed");
+        }
     }
 
     $scope.deleteApp = function (AppId) {

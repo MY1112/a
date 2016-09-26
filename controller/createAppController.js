@@ -2,7 +2,6 @@
  * Created by geek on 16-8-16.
  */
 app.controller('createAppController',function($scope,exchangeLeancloud,promptBox) {
-    alert('*********aa***********')
     $scope.addApp = function () {
         if($scope.appName){
 

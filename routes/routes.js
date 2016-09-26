@@ -19,10 +19,8 @@ app.config(['$routeProvider','$mdThemingProvider', function($routeProvider,$mdTh
 
     $routeProvider
         .when('/home',{
-        })
-        .when('/login',{
-            templateUrl: 'login.html',
-            controller: 'loginController'
+            templateUrl: 'home.html',
+            controller: 'homeController'
         })
         .when('/myApp',{
             templateUrl: 'myApp.html',

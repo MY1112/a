@@ -1,4 +1,4 @@
-app.controller('managerController',function ($scope,exchangeLeancloud) {
+app.controller('managerController',function ($scope,exchangeLeancloud,promptBox) {
     exchangeLeancloud.call('get_check', {paramsJson: 'paramsJson'}, function (data) {
         $scope.allApps = data;
     });
@@ -6,7 +6,7 @@ app.controller('managerController',function ($scope,exchangeLeancloud) {
         return appStatus == 'success';
     }
     $scope.notStatus = function(appStatus) {
-        return appStatus == '未审核';
+        return appStatus == 'notreviewed';
     }
     $scope.agree = function(appId) {
         document.getElementById(appId).getElementsByClassName('submit')[0].disabled = true;
@@ -27,5 +27,15 @@ app.controller('managerController',function ($scope,exchangeLeancloud) {
         exchangeLeancloud.call('no_consent_check',paramsJson,function(data) {
             document.getElementById(appId).getElementsByClassName('status')[0].innerText = data;
         })
+    }
+
+    $scope.deleteApp = function(AppId) {
+        var paramsJson = {
+            objectId: AppId
+        };
+        exchangeLeancloud.call('delete_app',paramsJson,function(data) {
+            promptBox.prompt(data);
+        })
+        document.getElementById(AppId).remove();
     }
 })
